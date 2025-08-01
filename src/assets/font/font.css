@@ -1,0 +1,21 @@
+@font-face {
+    font-family:'AlibabaPuHuiTi-3-55-Regular';
+    src: url('https://storage.mochiani.com/System/AlibabaPuHuiTi-3-55-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+      font-display: swap;
+    }
+@font-face {
+    font-family:'albbcun';
+    src: url('https://storage.mochiani.com/System/Front/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E6%99%AE%E6%83%A0%E4%BD%93%203.0%2075%20SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family:'AlimamaFangYuanTiVF-Thin';
+    src: url('https://storage.mochiani.com/System/Front/AlimamaFangYuanTiVF-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

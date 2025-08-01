@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'AmsIcon';
+    src: url('./ms/ms-icon.eot'),
+         url('./ms/ms-icon.woff') format('woff'),
+         url('./ms/ms-icon.ttf') format('truetype'),
+         url('./ms/ms-icon.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
