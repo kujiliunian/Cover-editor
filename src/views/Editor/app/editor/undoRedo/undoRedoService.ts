@@ -95,14 +95,14 @@ export class EditorUndoRedoService extends Disposable {
         this.initWorkspace()
     }
 
-    public canUndo() {
+    public get canUndo() {
+        console.log(this.undoRedoService.canUndo.value)
         return this.undoRedoService.canUndo.value
     }
 
-    public canRedo() {
+    public get canRedo() {
         return this.undoRedoService.canRedo.value
     }
-
     public disabledPropertyChangeWatch() {
         this.enablePropertyChange = false
     }
@@ -155,9 +155,12 @@ export class EditorUndoRedoService extends Disposable {
 
     public reset() {
         const undoRedo = this.getUndoRedo()
+        console.log(undoRedo)
         if (!undoRedo) return
 
         undoRedo.instantiation.reset()
+        this.eventbus.emit('undoRedoStackChange')
+        this.undoRedoService.clear();
         this.eventbus.emit('undoRedoStackChange')
     }
 
@@ -195,6 +198,7 @@ export class EditorUndoRedoService extends Disposable {
             if (!undoRedo || !undoRedo.instantiation.isTracking) return
             this.push(undoRedo.lastState)
             undoRedo.lastState = this.getJson()
+            console.log('save', undoRedo.lastState)
             // 添加命令
             this.undoRedoService.add(new SaveStateCommand(this.workspacesService, this, pageId))
         })

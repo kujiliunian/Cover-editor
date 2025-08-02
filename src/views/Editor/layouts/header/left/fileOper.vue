@@ -72,7 +72,7 @@ import {Layer} from 'ag-psd';
 import {getProjectInfo} from "@/api/ms/project";
 import {usesize} from "@/store/modules/usersize";
 const {proxy} = getCurrentInstance()
-const {canvas, keybinding} = useEditor()
+const {canvas, keybinding,undoRedo} = useEditor()
 
 const showFileOper = ref(false)
 const visible = ref(false)
@@ -85,16 +85,20 @@ const router = useRouter()
 let wordID=ref("")
 let wordname=ref("")
 const userInfo=usesize()
+
 watchEffect(() => {
   const route = router.currentRoute.value;
   if(route.query.id){
     wordID.value=route.query.id
-    getProjectInfo(route.query.id).then( res=> {
+
+    getProjectInfo(route.query.id).then(async  res=> {
+      undoRedo.disabledPropertyChangeWatch();
       if (res.code == 200){
-        console.log(res.data)
         userInfo.permission=res.data.project_role
         if(res.data.preview_info!=''){
           canvas.importJsonToCurrentPage(JSON.parse(res.data.preview_info), true)
+          undoRedo.reset();
+          undoRedo.enablePropertyChangeWatch();
         }
 
         // let reader=JSON.parse(res.data.preview_info)

@@ -55,6 +55,7 @@ export const useActiveObjectModel = <K extends keyof ILeaf, T = ILeaf[K] | undef
 
 
     const setObjectValue = (obj: any, newValue: any) => {
+        console.log(obj)
         console.log(`set ${key}: ${JSON.stringify(newValue)}`)
         if (obj[key] !== newValue) {
             modelValue.value = isNumber(newValue) ? toFixed(newValue) : newValue
@@ -63,7 +64,8 @@ export const useActiveObjectModel = <K extends keyof ILeaf, T = ILeaf[K] | undef
             }else {
                 obj[key] = newValue
             }
-            undoRedo.saveState()
+                undoRedo.saveState()
+
         }
     }
     const changeValue = (newValue: T, type: 'swipe' | 'change') => {

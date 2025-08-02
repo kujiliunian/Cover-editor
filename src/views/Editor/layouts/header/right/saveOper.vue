@@ -14,7 +14,7 @@
 <!--        </a-button>-->
 
         <a-divider direction="vertical" />
-
+        <zoom/>
 <!--        <a-button @click="preview()">-->
 <!--            <template #icon>-->
 <!--                <icon-eye />-->
@@ -226,7 +226,8 @@ const handleSelect = (v) => {
 import { ILeaf } from '@leafer-ui/interface';
 import {ElMessage} from "element-plus";
 import {getUserInfo} from "@/api/ms/user";
-import {usesize} from "@/store/modules/usersize"; // 导入 leafer 的类型
+import {usesize} from "@/store/modules/usersize";
+import Zoom from "@/views/Editor/layouts/header/left/zoom.vue"; // 导入 leafer 的类型
 let is_gm=ref(0)
 onMounted(()=>{
   getUserInfo().then((res)=>{

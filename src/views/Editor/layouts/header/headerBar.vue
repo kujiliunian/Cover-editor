@@ -8,11 +8,11 @@
                         <span class="black font-bold">麻薯动画</span>
                     </div>
                 </div>
-                <a-divider direction="vertical"/>
+
+              <div style="position: absolute;left: 20%">
+
                 <file-oper/>
-                <a-divider direction="vertical"/>
-                <undo/>
-                <a-divider direction="vertical"/>
+              </div>
 <!--                <a-space size="medium">-->
 <!--                    <a-tooltip effect="dark" content="标尺" mini>-->
 <!--                        <a-button class="icon-btn pd-5px"  @click="changeLineGuides">-->
@@ -21,9 +21,16 @@
 <!--                    </a-tooltip>-->
 <!--                </a-space>-->
 <!--                <a-divider direction="vertical"/>-->
-                <operation/>
+              <div style="position: absolute;left: 45%">
+
+                <undo/>
                 <a-divider direction="vertical"/>
-                <zoom/>
+                <operation/>
+              </div>
+<!--              <div style="position: absolute;left: 74%">-->
+
+<!--                <zoom/>-->
+<!--              </div>-->
               <AspectRatio/>
             </div>
             <div class="truncate">

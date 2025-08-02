@@ -1,12 +1,12 @@
 <template>
     <a-space >
-        <a-tooltip effect="dark" content="撤销" mini>
-            <a-button class="icon-btn pd-5px" :disabled="!undoRedo.canUndo()" @click="undo()">
+        <a-tooltip effect="dark" content="撤销" mini  :disabled="!undoRedo.canUndo">
+            <a-button class="icon-btn pd-5px" :disabled="!undoRedo.canUndo" @click="undo()">
                 <icon-undo :size="18"/>
             </a-button>
         </a-tooltip>
         <a-tooltip effect="dark" content="恢复" mini>
-            <a-button class="icon-btn pd-5px" :disabled="!undoRedo.canRedo()" @click="redo()">
+            <a-button class="icon-btn pd-5px" :disabled="!undoRedo.canRedo" @click="redo()">
                 <icon-redo :size="18"/>
             </a-button>
         </a-tooltip>

@@ -5,17 +5,16 @@ import { ref, computed, onMounted } from 'vue'; // 引入 computed 和 onMounted
 import ContextMenu from '@/components/contextMenu';
 import { useEditor } from '@/views/Editor/app';
 import { useActiveObjectModel } from "@/views/Editor/hooks/useActiveObjectModel";
-
-const { canvas } = useEditor();
+const { canvas,keybinding,undoRedo } = useEditor();
 
 // 1. 将所有选项定义为一个数据数组
 const aspectRatioOptions = ref([
-  { label: '16:9', value: '16:9', width: 1179, height: 663 },
+  // { label: '16:9', value: '16:9', width: 1179, height: 663 },
   { label: '3:4', value: '3:4', width: 963, height: 1284 },
-  { label: '4:3', value: '4:3', width: 1179, height: 884 },
-  { label: '1:1', value: '1:1', width: 1179, height: 1179 },
-  { label: '9:16', value: '9:16', width: 722, height: 1284 },
-  { label: "哔哩哔哩封面", value: '1179:738', width: 1179, height: 738 },
+  // { label: '4:3', value: '4:3', width: 1179, height: 884 },
+  // { label: '1:1', value: '1:1', width: 1179, height: 1179 },
+  // { label: '9:16', value: '9:16', width: 722, height: 1284 },
+  // { label: "哔哩哔哩封面", value: '1179:738', width: 1179, height: 738 },
 ]);
 
 // 2. 这个 ref 只存储当前选中的 `value`
@@ -33,36 +32,59 @@ const displayLabel = computed(() => {
 const width = useActiveObjectModel('width');
 const height = useActiveObjectModel('height');
 
-const setCanvasSize = (widthVal: number, heightVal: number) => {
+const  setCanvasSize = async (widthVal: number, heightVal: number) => {
+  undoRedo.disabledPropertyChangeWatch();
   width.value.setValue(widthVal);
   height.value.setValue(heightVal);
+  undoRedo.reset();
+  undoRedo.enablePropertyChangeWatch();
 };
 import {usesize} from "@/store/modules/usersize";
 let cavanssize=usesize()
 watch(() => canvas?.contentFrame?.width, (newWidth) => {
-  // 确保 canvas 和 newWidth 都有效
   if (!newWidth || !canvas.contentFrame) return;
 
-  const currentWidth = newWidth;
-  const currentHeight = canvas.contentFrame.height;
-
-  console.log(`Watch triggered: 检测到画布尺寸变化 - 宽: ${currentWidth}, 高: ${currentHeight}`);
+  const currentWidth = Math.round(newWidth); // 使用 Math.round 避免浮点数精度问题
+  const currentHeight = Math.round(canvas.contentFrame.height);
 
   const matchedOption = aspectRatioOptions.value.find(option =>
       option.width === currentWidth && option.height === currentHeight
   );
 
+  // 如果能匹配到预设项
   if (matchedOption) {
     console.log(`匹配到预设: ${matchedOption.label}`);
-    selectedValue.value = matchedOption.value;
-    cavanssize.size=selectedValue.value
-  } else {
-    console.log('未匹配到任何预设，当前为自定义尺寸。');
-    selectedValue.value = '3:4'; // 明确设置为 null
-    setCanvasSize(963,1284)
+    // 只有当当前选中的值和匹配到的值不同时，才更新
+    if (selectedValue.value !== matchedOption.value) {
+      selectedValue.value = matchedOption.value;
+      cavanssize.size = selectedValue.value;
+    }
+  }
+  // 如果不能匹配到预设项
+  else {
+    console.log(`未匹配到预设，将重置为默认值 3:4`);
+
+    // 【核心修改】检查当前尺寸是否已经是你要设置的目标尺寸
+    if (currentWidth !== 963 || currentHeight !== 1284) {
+
+      // 因为我们要修改画布尺寸，这个操作需要被记录到历史记录中
+      // 所以【不要】使用 disable/enable/reset 这一套！
+      // 直接修改尺寸，让 undo/redo 服务去记录这个变化
+
+      selectedValue.value = '3:4';
+      setCanvasSize(963, 1284); // 这个操作会被 UndoRedoService 监听到并保存
+      cavanssize.size = selectedValue.value;
+
+    } else {
+      // 如果尺寸已经是目标尺寸了，但 selectedValue 不对，只更新UI，不操作画布
+      if (selectedValue.value !== '3:4') {
+        selectedValue.value = '3:4';
+        cavanssize.size = selectedValue.value;
+      }
+    }
   }
 }, {
-  immediate: true, // 4. 立即执行一次 watch，以处理初始状态
+  immediate: true,
 });
 // 点击按钮，打开菜单
 const openMenu = (e: MouseEvent) => {
