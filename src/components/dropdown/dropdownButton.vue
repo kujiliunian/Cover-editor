@@ -203,12 +203,15 @@
     }
 
     &:active {
-      background-color: var(--color-secondary-active) !important;
+      background-color: unset !important;
+      color: #000 !important;
+      background: linear-gradient(110deg, #CBFFF8 6%, #21FFF3 36%, #FFF600 98%);
     }
 
     &.active {
-      background-color: rgb(var(--primary-6)) !important;
-      color: #fff;
+      background-color: unset !important;
+      color: #000 !important;
+      background: linear-gradient(110deg, #CBFFF8 6%, #21FFF3 36%, #FFF600 98%);
 
       .more-btn {
         color: #fff;
