@@ -31,7 +31,7 @@
 
 <!--                <zoom/>-->
 <!--              </div>-->
-              <AspectRatio/>
+
             </div>
             <div class="truncate">
 

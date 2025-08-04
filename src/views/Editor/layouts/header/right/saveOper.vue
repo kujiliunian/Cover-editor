@@ -12,7 +12,7 @@
 <!--                  class="!underline underline-offset-5 p-l-5px p-r-5px">-->
 <!--            <ali-icon type="icon-github" class="mr3px text-size-18px"/>GitHub-->
 <!--        </a-button>-->
-
+      <AspectRatio/>
         <a-divider direction="vertical" />
         <zoom/>
 <!--        <a-button @click="preview()">-->
@@ -227,7 +227,8 @@ import { ILeaf } from '@leafer-ui/interface';
 import {ElMessage} from "element-plus";
 import {getUserInfo} from "@/api/ms/user";
 import {usesize} from "@/store/modules/usersize";
-import Zoom from "@/views/Editor/layouts/header/left/zoom.vue"; // 导入 leafer 的类型
+import Zoom from "@/views/Editor/layouts/header/left/zoom.vue";
+import AspectRatio from "@/views/Editor/layouts/header/left/aspectRatio.vue"; // 导入 leafer 的类型
 let is_gm=ref(0)
 onMounted(()=>{
   getUserInfo().then((res)=>{
