@@ -243,7 +243,7 @@ const getStyle = (index: number) => {
   }
   .s-widget-wrap {
     width: @leftPanelWidth;
-    background-color: #1e202570;
+    background-color: #1e2025;
     flex: 1;
     height: 100%;
   }
