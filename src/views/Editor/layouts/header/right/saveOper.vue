@@ -43,24 +43,27 @@
 <!--      >保存</ms-button>-->
       <msLoading :text="msLoadingText" v-if="msLoadingText!=''"/>
       <ms-button
+          style="min-width: 83px"
               type="primary"
               size="mini"
               @click="handleDownload()"
              
       >下载封面</ms-button>
       <ms-button
+          style="min-width: 83px"
           type="primary"
           size="mini"
           @click="handleSelect('json')"
           v-if="is_gm!=0"
       >下载JSON</ms-button>
       <ms-button
-
+          style="min-width: 63px"
           size="mini"
           @click="backProject()"
 
       >仅返回</ms-button>
       <ms-button
+          style="min-width: 93px"
           v-if="userInfo.permission==0"
           size="mini"
           @click="saveModle()"
@@ -169,7 +172,7 @@ const backProject=()=>{
   }else{
     const route = router.currentRoute.value;
     if(route.query.id){
-    window.location.href = "http://localhost:5173/index/myWork?id="+route.query.id
+    window.location.href = "http://localhost:5175/index/myWork?id="+route.query.id
     }
   }
 }

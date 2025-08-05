@@ -6,10 +6,10 @@
                 <template #item="{ item, url, index }">
                     <a-card hoverable @click="handleClick(item)" class="cursor-pointer drop-shadow" :body-style="{ padding: '0px' }">
                         <div class="">
-                            <div class="tags">
-                                <div class="tag">麻薯VIP</div>
-<!--                                <div>ag</div>-->
-                            </div>
+<!--                            <div class="tags">-->
+<!--                                <div class="tag">麻薯VIP</div>-->
+<!--&lt;!&ndash;                                <div>ag</div>&ndash;&gt;-->
+<!--                            </div>-->
                             <LazyImg :url="url" class="img" />
                         </div>
                         <!--                      <div class="p5px">-->
