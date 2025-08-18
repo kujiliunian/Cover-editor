@@ -18,8 +18,7 @@ interface ApiResponse<T = any> {
 
 // 创建 axios 实例
 const service: AxiosInstance = axios.create({
-   baseURL: "https://testapp.mochiani.com/app",
-    //baseURL: "http://192.168.2.118:10100",
+    baseURL: import.meta.env.VITE_APP_BASE_API,
     timeout: 10000,
 });
 
@@ -73,14 +72,14 @@ service.interceptors.response.use(
                           domain: window.location.hostname.indexOf("mochiani.com") > 0 ? ".mochiani.com" : window.location.hostname
                         }
                       );
-                  
+
                     setTimeout(()=>{
 
                         if(localStorage){
                             location.reload();
                         }
                     },100)
-                    
+
                     break;
                 case 403:
                     ElMessage.error('拒绝访问');

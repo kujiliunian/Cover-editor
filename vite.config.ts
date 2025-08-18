@@ -43,6 +43,13 @@ const config=({mode})=>{
         ],
         server: {
             host: '0.0.0.0', // 监听所有网络接口
+            proxy: {
+                '/appapi': {
+                    target: 'https://testapp.realcopyright.cn', // 目标服务器
+                    changeOrigin: true, // 必须设置为 true，用于支持跨域
+                    rewrite: (path) => path.replace(/^\/appapi/, '/app'), // 路径重写
+                },
+            },
             port: 2583, // 指定端口号
             open: true
         },
