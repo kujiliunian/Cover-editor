@@ -19,7 +19,7 @@ interface ApiResponse<T = any> {
 // 创建 axios 实例
 const service: AxiosInstance = axios.create({
     baseURL: import.meta.env.VITE_APP_BASE_API,
-    timeout: 10000,
+    timeout: 120000,
 });
 
 service.interceptors.request.use(
