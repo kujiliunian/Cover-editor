@@ -12,7 +12,7 @@
 # Description:       starts the xyserver
 ### END INIT INFO
 UZ_HOME=/home/admin/cover_editor/dist  # 从package.tgz中解压出来的jar包放到这个目录下
-WWW_HOME=/www/wwwroot/testcover.mochiani.com
+WWW_HOME=/www/wwwroot/cover.mochiani.com
 mkdir -p ${WWW_HOME}
 
 panel_status()
