@@ -164,17 +164,17 @@ const resetForm = () => {
     }
 }
 const backProject=()=>{
-  if(window.location.hostname.indexOf("mochiani.com") > 0 ){
+  // if(window.location.hostname.indexOf("mochiani.com") > 0 ){
     const route = router.currentRoute.value;
     if(route.query.id){
-    window.location.href = "https://test.mochiani.com/index/myWork?id="+route.query.id
+    window.location.href = "/home?id="+route.query.id
     }
-  }else{
-    const route = router.currentRoute.value;
-    if(route.query.id){
-    window.location.href = "http://localhost:5175/index/myWork?id="+route.query.id
-    }
-  }
+  // }else{
+  //   const route = router.currentRoute.value;
+  //   if(route.query.id){
+  //   window.location.href = "http://localhost:5175/index/myWork?id="+route.query.id
+  //   }
+  // }
 }
 const preview = async () => {
     const result = await editor.contentFrame.export('png', {blob: true})
