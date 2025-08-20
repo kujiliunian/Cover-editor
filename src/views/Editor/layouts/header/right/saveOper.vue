@@ -166,9 +166,11 @@ const resetForm = () => {
 const backProject=()=>{
   // if(window.location.hostname.indexOf("mochiani.com") > 0 ){
     const route = router.currentRoute.value;
-    if(route.query.id){  }
+    if(route.query.id){
+      window.location.href = "/home?id="+route.query.id
+    }
     console.log(route.query.id)
-    window.location.href = "/home?id="+route.query.id
+
 
   // }else{
   //   const route = router.currentRoute.value;

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
 
 import Editor from '@/views/Editor/editor.vue'
 import PsParser from '@/views/PsParser/index.vue'
@@ -6,7 +6,7 @@ import CusComponents from '@/views/CusComponents/index.vue'
 import Home from '@/views/Home/home.vue'
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
 
     {
