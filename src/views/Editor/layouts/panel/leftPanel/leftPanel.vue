@@ -37,6 +37,7 @@ import TextListWrap from "./wrap/TextListWrap.vue";
 import ImageListWrap from "./wrap/ImageListWrap.vue";
 import BackgroundWrap from "./wrap/BackgroundWrap.vue";
 import GraphListWrap from "./wrap/GraphListWrap.vue";
+import cloudSpace from './wrap/cloudSpace.vue'
 import ToolsWrap from "./wrap/ToolsWrap.vue";
 import Help from "@/views/Editor/layouts/panel/leftPanel/help.vue";
 import MSIcon from "@/components/msIcon/MSIcon.vue";
@@ -66,6 +67,12 @@ const widgetClassifyList =  [
         show: false,
         component: GraphListWrap,
     },
+  {
+    name: '云空间',
+    icon: 'manage-space',
+    show: false,
+    component: cloudSpace,
+  },
     // {
     //     name: '图片',
     //     icon: 'icon-image',

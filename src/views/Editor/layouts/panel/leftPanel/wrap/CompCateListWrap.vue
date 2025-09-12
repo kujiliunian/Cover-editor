@@ -4,14 +4,14 @@
             <div v-show="!currentCate" class="content__wrap">
                 <a-scrollbar style="height:calc(100vh - 2.5rem);overflow: auto;">
                     <div v-for="(cate, index) in props.cateList" :key="index + 't'">
-                        <div v-if="cate.list.length > 0" class="types__header" @click="selectCate(cate)">
-                            <span style="flex: 1">{{ cate.name }}</span>
-                            <span class="types__header-more">全部<icon-right /></span>
-                        </div>
+<!--                        <div v-if="cate.list.length > 0" class="types__header" @click="selectCate(cate)">-->
+<!--                            <span style="flex: 1">{{ cate.name }}</span>-->
+<!--                            <span class="types__header-more">全部<icon-right /></span>-->
+<!--                        </div>-->
 <!--                        <div v-else class="loading">暂无更多</div>-->
                         <div class="list-wrap" v-if="cate.list.length > 0">
                             <div v-for="(item, i) in cate.list" :key="i + 'sl'" draggable="false" @click="handleClick(item)" >
-                                <a-image v-if="i<6"
+                                <a-image
                                          class="list__img-thumb"
                                          height="95"
                                          width="95"

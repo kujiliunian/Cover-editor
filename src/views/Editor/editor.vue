@@ -44,6 +44,7 @@ const router = useRouter()
 const position = ref('1')
 const loading = ref(true)
 onMounted(() => {
+  window.history.replaceState(null, '', window.location.href);
   if(!Cookies.get(encryption('token'))){
       if(window.location.hostname.indexOf("mochiani.com") > 0 ){
         window.location.href ="https://test.mochiani.com/"

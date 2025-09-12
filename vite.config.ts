@@ -50,6 +50,7 @@ const config=({mode})=>{
                     rewrite: (path) => path.replace(/^\/appapi/, '/app'), // 路径重写
                 },
             },
+
             port: 2583, // 指定端口号
             open: true
         },
